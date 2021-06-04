@@ -1,0 +1,26 @@
+
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="{{ path('home')}}">Dabchi.COM</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Nos Produits</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contacts</a>
+                </li>
+            </ul>
+            <div class="navbar-items-custom">
+                {% if app.user %}
+                    <a href="{{ path('account')}}">Mon Compte</a>|<a href="{{ path('app_logout')}}">Déconnecter</a>
+                {% else %}
+                    <a href="{{ path('app_register')}}">Inscription</a>|<a href="{{ path('app_login')}}">Connecter</a>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+</header>

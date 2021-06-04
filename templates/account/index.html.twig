@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon compte _ La boutique{% endblock %}
+
+{% block body %}
+<h3>Mon Compte</h3> <br>
+<p>Biennvenue <b>{{ app.user.lastname | title }}</b> dans votre compte.</p>
+<p> C'est dans cet espace que vous allez gèrer toutes vos informations personnelles</p>
+<hr>
+<ul>
+    <li> <a href="">Modifier mon mot de passe</a> </li>
+    <li> <a href="">Ajouter mes addresses</a> </li>
+    <li> <a href="">Mes commandes</a> </li>
+</ul>
+
+{% endblock %}
