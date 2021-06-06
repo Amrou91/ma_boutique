@@ -3,8 +3,11 @@
 {% block title %}Mon compte _ La boutique{% endblock %}
 
 {% block body %}
+    {% for message in app.flashes('enregistre') %}
+        <div class="alert alert-success" role="alert">{{ message }}</div>
+    {% endfor %}
 <h3>Mon Compte</h3> <br>
-<p>Biennvenue <b>{{ app.user.lastname | title }}</b> dans votre compte.</p>
+<p>Biennvenue <b>{{ app.user.firstname | title }}</b> dans votre compte.</p>
 <p> C'est dans cet espace que vous allez gèrer toutes vos informations personnelles</p>
 <hr>
 <ul>
