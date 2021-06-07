@@ -16,9 +16,9 @@
             </ul>
             <div class="navbar-items-custom">
                 {% if app.user %}
-                    <a href="{{ path('account')}}">Mon Compte</a>|<a href="{{ path('app_logout')}}">Déconnecter</a>
+                    <i class="bi bi-person-circle"></i><a href="{{ path('account')}}">Mon Compte</a>||<i class="fa fa-sign-out"></i><a href="{{ path('app_logout')}}">Déconnecter</a>
                 {% else %}
-                    <a href="{{ path('app_register')}}">Inscription</a>|<a href="{{ path('app_login')}}">Connecter</a>
+                    <i class="bi bi-person-fill"></i><a href="{{ path('app_login')}}">Connection</a>||<a href="{{ path('app_register')}}">S'inscrire</a> 
                 {% endif %}
             </div>
         </div>
