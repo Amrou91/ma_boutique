@@ -1,15 +1,4 @@
-.navbar-items-custom, .navbar-items-custom a{
-    color:#fff;
-} 
-.footer_custom {
-  text-align: center;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  background-color: lightblue;
-  color: #070707;
 
-}
 
 /*
 Template Name: Electro - HTML Ecommerce Template
@@ -2341,3 +2330,4 @@ body {
     width: 200px;
     text-align: left;
   }
+
