@@ -14,7 +14,7 @@
             <span class="product_page_price"> {{ (produit.price/100) | number_format(2, ',') }}€</span> 
             <hr>
             <p>{{ produit.description |raw}}</p>
-            <a href="" class="btn btn-primary">Ajouter au Panier</a>
+            <a href="{{ path('add_cart', {'id':produit.id})}}" class="btn btn-primary">Ajouter au Panier</a>
         </div>
     </div>
 {% endblock %}
