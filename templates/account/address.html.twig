@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes Addresses_ La boutique{% endblock %}
+
+{% block body %}
+<a href="{{ path('ajouter_address') }}" class="btn btn-info btn-sm float-right" >Ajouter une addresse </a>
+<h3>Mes Addresses</h3> <br>
+<p>C'est dans cet espace que vous allez pouvoir gérer toutes vos addresss.</p>
+<a href="{{ path('account') }}">Retour</a>
+<hr> 
+    <div class="row">
+        {% for address in app.user.addresses %}
+            <div class="col-md-4">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ address.name }}</h5>
+                        <p class="card-text">{{ address.address }}, <br>
+                            {{ address.postal }} - {{ address.city }} - {{ address.country }}
+                        </p>
+                        <a href="{{ path('edit_address', {'id': address.id}) }}" class="card-link">Modifier</a> |<a href="{{ path('delete_address', {'id': address.id}) }}" class="card-link">Supprimer</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}
