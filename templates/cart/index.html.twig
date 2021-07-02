@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello CartController!{% endblock %}
+{% block title %}Mon panier- La Boutique{% endblock %}
 
 {% block body %}
 <h3>Mon Panier</h3>
@@ -43,7 +43,7 @@ Retrouvez l'ensemble des produits que vous avez ajouté à votre panier. <br> <b
 <div class="text-right mb-5">
     <b>Nombres de Produits:</b> {{ cart|length}} <br>
     <b>Totale de Mon Panier:</b>  {{ (total /100) | number_format(2, ',') }}€<br> <br> 
-    <a href="" class="btn btn-success btn-block"> Valider</a>
+    <a href="{{ path('order')}}" class="btn btn-success btn-block"> Valider</a>
 </div>
 {% else %}
 <hr>

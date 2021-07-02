@@ -52,3 +52,23 @@ margin-top: 20px;
     font-size: 19px;
     font-weight: bold;
   }
+
+  .login_form{
+    max-width: 600px;
+    margin: auto;
+  }
+  .form-check{
+    background-color: #e9edf3;
+    padding: 20px 65px;
+    margin-top: 10px;
+    border-style: 2px solid;
+    border-radius: 5px;
+  }
+  .col-form-label{
+    font-weight: bold;
+  }
+  .order-summary{
+    background-color: #e9edf3;
+    padding: 20px;
+    margin-top: 22px;
+  }
