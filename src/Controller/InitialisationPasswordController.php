@@ -24,7 +24,7 @@ class InitialisationPasswordController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()){
             $old_pwd=$form->get('old_password')->getData();
             // dd($old_pwd);
-            if($passwordEncoder->isPasswordValid($user, $old_pwd)){
+            if($passwordEncoder->isPasswordValid($user, $old_pwd)){ 
                 $new_pwd=$form->get('new_password')->getData();
                 $password= $passwordEncoder->encodePassword($user, $new_pwd);
                 $user->setPassword($password);

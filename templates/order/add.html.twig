@@ -1,6 +1,12 @@
- {% extends 'base.html.twig' %}
+{% extends 'base.html.twig' %}
+
+{% block javascript %}
+    <script src="https://js.stripe.com/v3/"></script>
+{% endblock %}
+
 
 {% block title %}Ma Commande- La Boutique{% endblock %}
+
 
 {% block body %}
 <h2>Mon recapitulatif</h2>
@@ -50,9 +56,40 @@
         <strong>Livraison: {{ (carrier.price) | number_format(2, ',') }}€</strong>
         <hr>
         <strong>Total: {{ ((total /100)+(carrier.price)) | number_format(2, ',') }}€</strong>
+        
+        <a class="btn btn-success btn-block mt-3" id="checkout-button">Payer | {{ ((total / 100) + (carrier.price / 100))|number_format(2, ',', '.') }} €</a>
 
-        <a href="" class="btn btn-success btn-block mt-3">Payer | {{ ((total /100)+(carrier.price)) | number_format(2, ',') }}€</a>
     </div> 
 </div>
+ 
+{% endblock %} 
 
+{% block script %}
+    <script type="text/javascript">
+        var stripe = Stripe('pk_test_51J96frLi3uDNMuzAG8qIdoyZ57bd1WLLdBsTgfn3IyMRYm8Zaf2tofJbjoHwmjTJ7eDTuiYJp7gstlTM29UKOqKa00rKIQLGzc');
+        var checkoutButton = document.getElementById("checkout-button");
+        checkoutButton.addEventListener("click", function () {
+                fetch("/commande/create-session/{{ reference }}", { 
+                    method: "POST",
+                })
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (session) {
+                    if (session.error == 'order') {
+                        window.location.replace('{{ path('order') }}');
+                    } else {
+                        return stripe.redirectToCheckout({ sessionId: session.id });
+                    }
+                })
+                .then(function (result) {
+                    if (result.error) {
+                        alert(result.error.message);
+                    }
+                })
+                .catch(function (error) {
+                    console.error("Error:", error);
+                });
+        });
+    </script>
 {% endblock %}

@@ -10,9 +10,9 @@ class SearchData{
     /**
      * Undocumented variable
      *
-     * @var null|integer
+     * @var integer
      */
-    public $string;
+    public $string= '';
 
     /**
      * Undocumented variable

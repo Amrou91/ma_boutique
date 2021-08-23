@@ -1,0 +1,6 @@
+
+$content = "Bonjour ".$user->getFirstname()."<br/>
+<p> Vous avez demandé à réinitialiser votre mot de passe sur le site La Boutique Française.</p>
+<p> Merci de bien vouloir cliquer sur le lien suivant pour <a href="{{ absolute_url( path('activation', {'token':token} )) }}">mettre à jour votre mot de passe</a> <p>
+<p><a href="{{ absolute_url( path('activation', {'token':token} )) }}">Activer mon Compte</a></p>
+

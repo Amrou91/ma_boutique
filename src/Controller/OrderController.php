@@ -56,7 +56,6 @@ class OrderController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             // dd($form->getData());
-            $order=new Order();
             $date=new \DateTime();
             $carries=$form->get('carries')->getData();
             $delivry=$form->get('addresses')->getData();
@@ -68,15 +67,20 @@ class OrderController extends AbstractController
             $delivry_content .= '</br>'.$delivry->getAddress();
             $delivry_content .= '</br>'.$delivry->getPostal().' '.$delivry->getCity();
             $delivry_content .= '</br>'.$delivry->getCountry();
-    
+            
+            $order=new Order();
+            $reference = $date->format('dmY').'-'.uniqid();
+            $order->setReference($reference);
             $order ->setUser($this->getUser());
             $order ->setCreatedAt($date);
             $order ->setCarrierName($carries->getName());
             $order ->setCarrierPrice($carries->getPrice());
             $order ->setDelivry($delivry_content);
-            $order ->setIsPaid(0);
+            $order ->setState(0);
             $this -> entityManager->persist($order);
             
+           
+
             foreach($cart->getFull() as $product){
                 $orderDetails= new OrderDetails();
                 $orderDetails->setMyOrder($order);
@@ -85,16 +89,20 @@ class OrderController extends AbstractController
                 $orderDetails->setPrice($product['product']->getPrice());
                 $orderDetails->setTotal($product['product']->getPrice()*$product['quantity']);
                 $this -> entityManager->persist($orderDetails);
+
             }
+
             $this -> entityManager->flush();
+
 
             return $this->render('order/add.html.twig', [
                 'cart' => $cart ->getFull(),
                 'carrier' => $carries,
-                'delivry' => $delivry_content
+                'delivry' => $delivry_content,
+                'reference' => $order->getReference()
             ]);
         } 
 
-        return $this->redirectToRoute('cart');
+        return $this->redirectToRoute('cart'); 
     }
 }

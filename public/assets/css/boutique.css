@@ -2,25 +2,30 @@ body {
   position: relative;
 }
 .navbar-items-custom, .navbar-items-custom a{
-  color:#fff;
+  color:rgb(111, 236, 205);
 } 
+.navbar-items-custom a:hover{
+  color: #f1f6f7;
+}
+
+/* Footer */
 .footer_custom {
 text-align: center;
 position: absolute;
-bottom: 0;
 width: 100%;
-background-color: rgb(46, 54, 56);
+background-color: #095A63;
 padding-top: 20px;
-color: #070707;
-margin-top: 20px;
-
+padding-bottom: 20px;
+margin-top: auto;
+color: white;
 }
+
 
 .product-items h5{
     text-transform: uppercase;
     margin-bottom: 10px;
     font-size: 20px;
-  } 
+  }  
 
 
   .product-items .product-subtitle{
@@ -39,9 +44,9 @@ margin-top: 20px;
   }
 
   .product-items{
-    border-style: outset;
+    /* border-style: outset;
     border-color: rgb(168, 168, 156);
-    border-radius: 15px;
+    border-radius: 15px; */
     /* height: 100%; */
     margin-top: 50px;
     padding-bottom: 20px;
@@ -57,13 +62,18 @@ margin-top: 20px;
     max-width: 600px;
     margin: auto;
   }
-  .form-check{
+
+  .form_logout{
+    max-width: 70%;
+    margin: auto;
+  }
+  /* .form-check{
     background-color: #e9edf3;
     padding: 20px 65px;
     margin-top: 10px;
     border-style: 2px solid;
     border-radius: 5px;
-  }
+  } */
   .col-form-label{
     font-weight: bold;
   }
@@ -72,3 +82,36 @@ margin-top: 20px;
     padding: 20px;
     margin-top: 22px;
   }
+  .carousel-caption{
+    color: #e9edf3;
+  } 
+
+.nav-item a{
+  color:teal;
+}
+
+label {
+  color: #1a237e;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.account-item {
+  background-color: #f1f2f6;
+  padding: 70px;
+}
+
+.account-item a {
+  text-transform: uppercase;
+  font-size: 13px;
+  color: #4b6584;
+  font-weight: bold;
+}
+.account-item a:hover {
+  color: #778ca3;
+  text-decoration: none;
+}
+
+
+
+ 

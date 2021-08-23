@@ -16,11 +16,9 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class ProductsRepository extends ServiceEntityRepository
 {
-    private $paginator;
     public function __construct(ManagerRegistry $registry, PaginatorInterface $paginator)
     {
         parent::__construct($registry, Products::class);
-        $this -> paginator =  $paginator;
     }
 
     
@@ -33,33 +31,27 @@ class ProductsRepository extends ServiceEntityRepository
         ;
     }
 
-    /**
-     * @return PaginatorInterface Returns an array of Users objects
-     */
-    public function Search(SearchData $search)
+
+    public function findWithSearch(SearchData $data)
     {
-        $query=$this->createQueryBuilder('p')
-                    // ->select('p','c')
-                    ->join('p.category', 's')
-                    ;
+        $query = $this
+            ->createQueryBuilder('p')
+            ->select('c', 'p')
+            ->join('p.category', 'c');
 
-                    if (!empty($search->string)){
-                        $query=$query->andWhere('p.name LIKE :string')
-                                     ->setParameter('string',"%{$search->string}%");
-                    }
-                    if (!empty($search->category)){
-                        $query=$query->andWhere('s.id IN (:category)')
-                                     ->setParameter('category', $search->category );
-                    } 
+        if (!empty($data->category)) {
+            $query = $query
+                ->andWhere('c.id IN (:category)')
+                ->setParameter('category', $data->category);
+        }
 
-            
-        $query= $query->getQuery()->getResult();
-        return $this -> paginator ->paginate(
-            $query, /* query NOT result */
-            $search->page, /*page number*/  
-                // $request->query->getInt('page', 1)
-            9 /*limit per page*/);
-        
+        if (!empty($data->string)) {
+            $query = $query
+                ->andWhere('p.name LIKE :string')
+                ->setParameter('string', "%{$data->string}%");
+        }
+
+        return $query->getQuery()->getResult();
     }
 
     // /**

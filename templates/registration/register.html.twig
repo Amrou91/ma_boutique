@@ -10,21 +10,42 @@
 
 
     <div class="container">
-        <h4 class="section_title">S'inscrire</h4>
-            {{ form_start(registrationForm) }}
-                <div class="form-group"> {{ form_row(registrationForm.firstname, {'attr': {'class': 'contact_input'}}) }} </div>
-                <div class="form-group"> {{ form_row(registrationForm.lastname, {'attr': {'class': 'contact_input'}}) }} </div>
-                <div class="form-group"> {{ form_row(registrationForm.email, {'attr': {'class': 'contact_input'}}) }} </div>
-                <div class="form-group"> {{ form_row(registrationForm.plainPassword.first, {
-                    'attr': {'class': 'contact_input'}
-                }) }} </div>
-                <div class="form-group"> {{ form_row(registrationForm.plainPassword.second, {'attr': {'class': 'contact_input'}}) }} </div>
-                <div>{{ form_row(registrationForm.agreeTerms) }}</div>
-                <button class="btn btn-lg btn-primary" type="submit">
-                    S'inscrire
-                </button>
-            {{ form_end(registrationForm) }}
-                   
+        <div class="form_logout">
+            <h4 class="section_title">Créer un compte</h4> <br>
+                {{ form_start(registrationForm) }}
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group"> {{ form_row(registrationForm.firstname, {'attr': {'class': 'contact_input'}}) }} </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group"> {{ form_row(registrationForm.lastname, {'attr': {'class': 'contact_input'}}) }} </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group"> {{ form_row(registrationForm.email, {'attr': {'class': 'contact_input'}}) }} </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group"> {{ form_row(registrationForm.plainPassword.first, {
+                            'attr': {'class': 'contact_input'}
+                        }) }} </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group"> {{ form_row(registrationForm.plainPassword.second, {'attr': {'class': 'contact_input'}}) }} </div>
+                    </div> 
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div>{{ form_row(registrationForm.agreeTerms) }}</div>
+                    </div>
+                </div>
+                    <button class="btn btn-lg btn-block" style="background-color: #1AA1AB;" type="submit">
+                        Créer votre compte
+                    </button>
+                {{ form_end(registrationForm) }}
+        </div>       
     </div>
-</div>
+</div> <br> <br>
 {% endblock %}

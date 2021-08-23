@@ -11,6 +11,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use App\Entity\Products;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 
 
@@ -27,6 +28,7 @@ class ProductsCrudController extends AbstractCrudController
             IntegerField::new('id')->onlyOnIndex(), 
             TextField::new('name','Nom des Produits'),
             SlugField::new('slug')->setTargetFieldName('name'),
+            BooleanField::new('isBest'),
             MoneyField::new('price')->setCurrency('EUR'),
             TextField::new('subtitle'),
             ImageField::new('imageFile')

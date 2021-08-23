@@ -84,6 +84,12 @@ class OrderDetails
         return $this;
     }
 
+    public function __toString()
+    {
+        return $this->getProduct().' x'.$this->getQuantity();
+    }
+
+
     public function getPrice(): ?float
     {
         return $this->price;

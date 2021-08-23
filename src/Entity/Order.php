@@ -6,6 +6,7 @@ use App\Repository\OrderRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use phpDocumentor\Reflection\Types\Integer;
 
 /**
  * @ORM\Entity(repositoryClass=OrderRepository::class)
@@ -52,9 +53,20 @@ class Order
     private $orderDetails;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="integer")
      */
-    private $isPaid;
+    private $state;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $stripeSessionId;
+
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $reference;
 
     public function __construct()
     {
@@ -166,14 +178,39 @@ class Order
         return $this;
     }
 
-    public function getIsPaid(): ?bool
+    public function getState(): ?int
     {
-        return $this->isPaid;
+        return $this->state;
     }
 
-    public function setIsPaid(bool $isPaid): self
+    public function setState(int $state): self
     {
-        $this->isPaid = $isPaid;
+        $this->state = $state;
+
+        return $this;
+    }
+
+    public function getStripeSessionId(): ?string
+    {
+        return $this->stripeSessionId;
+    }
+
+    public function setStripeSessionId(?string $stripeSessionId): self
+    {
+        $this->stripeSessionId = $stripeSessionId;
+
+        return $this;
+    }
+
+
+    public function getReference(): ?string
+    {
+        return $this->reference;
+    }
+
+    public function setReference(string $reference): self
+    {
+        $this->reference = $reference;
 
         return $this;
     }

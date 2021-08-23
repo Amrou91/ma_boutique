@@ -25,19 +25,27 @@ class ProductsController extends AbstractController
     /**
      * @Route("/nos-produits", name="products")
      */
-    public function index(ProductsRepository $produit, Request $request): Response
+    public function index(Request $request): Response
     {
-        $data= new SearchData();
-        $data->page=$request->get('page', 1);
+        $data= new SearchData(); 
         $form = $this->createForm(SearchType::class, $data);
-        $produits=$produit->findAll();
         $form -> handleRequest($request);
-        // dd($data);
-        $produits=$produit->Search($data);
+        // dd($data); 
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $produit = $this->entityManager->getRepository(Products::class)->findWithSearch($data);
+        } else {
+            if ( empty($data->string))
+            {
+                $this->addFlash('notice', 'Article Created! Knowledge is power!');
+            }
+            
+            $produit = $this->entityManager->getRepository(Products::class)->findAll();
+        }
         
         return $this->render('products/index.html.twig', [
-            'produits' => $produits,
-            'form' => $form ->createView()
+            'produits' => $produit,
+            'form' => $form ->createView(),
         ]);
     }
 
@@ -46,12 +54,15 @@ class ProductsController extends AbstractController
      */
     public function show($slug): Response
     {
-        $produit = $this -> entityManager ->getRepository(Products::class)->findOneBySlug($slug);
+        $produit = $this -> entityManager -> getRepository(Products::class)->findOneBySlug($slug);
+        $produits = $this-> entityManager -> getRepository(Products::class)->findByIsBest(1);
+
         if(!$produit){
             $this->redirectToRoute('products');
         }
         return $this->render('products/show.html.twig', [
-            'produit' => $produit,  
+            'produit' => $produit, 
+            'produits' =>  $produits
         ]);
     }
 }
