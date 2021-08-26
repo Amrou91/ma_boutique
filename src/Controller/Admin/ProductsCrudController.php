@@ -27,10 +27,10 @@ class ProductsCrudController extends AbstractCrudController
         return [
             IntegerField::new('id')->onlyOnIndex(), 
             TextField::new('name','Nom des Produits'),
-            SlugField::new('slug')->setTargetFieldName('name'),
+            SlugField::new('slug')->setTargetFieldName('name')->hideOnIndex(),
             BooleanField::new('isBest'),
             MoneyField::new('price')->setCurrency('EUR'),
-            TextField::new('subtitle'),
+            TextField::new('subtitle')->hideOnIndex(),
             ImageField::new('imageFile')
                 ->setFormType(VichImageType::class)
                 ->onlyOnDetail(), 
@@ -43,6 +43,8 @@ class ProductsCrudController extends AbstractCrudController
             DateTimeField::new('update_at')->onlyOnIndex(), 
             TextEditorField::new('description'),
             AssociationField::new('category'),
+            AssociationField::new('fashion'),
+
         ];
     }
     

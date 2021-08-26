@@ -3,6 +3,7 @@
 namespace App\Data;
 
 use App\Entity\Category;
+use App\Entity\Fashion;
 
 class SearchData{
 
@@ -20,6 +21,13 @@ class SearchData{
      * @var Category[]
      */
     public $category=[];
+
+     /**
+     * Undocumented variable
+     *
+     * @var Fashion[]
+     */
+    public $fashion=[];
 
     
 }

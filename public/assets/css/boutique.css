@@ -4,7 +4,7 @@ body {
 .navbar-items-custom, .navbar-items-custom a{
   color:rgb(111, 236, 205);
 } 
-.navbar-items-custom a:hover{
+.navbar-items-custom a:hover{ 
   color: #f1f6f7;
 }
 
@@ -23,8 +23,10 @@ color: white;
 
 .product-items h5{
     text-transform: uppercase;
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
+    padding: 12px;
     font-size: 20px;
+    
   }  
 
 
@@ -48,8 +50,13 @@ color: white;
     border-color: rgb(168, 168, 156);
     border-radius: 15px; */
     /* height: 100%; */
-    margin-top: 50px;
-    padding-bottom: 20px;
+    height: 98%;
+    /* margin-top: 50px; */
+    /* margin-top: 50px; 
+    /* padding-bottom: 20px; */
+    background-color: lavender;
+    border-radius: 10px;
+    padding: 5px;
     
   }
 
@@ -67,29 +74,33 @@ color: white;
     max-width: 70%;
     margin: auto;
   }
-  /* .form-check{
-    background-color: #e9edf3;
-    padding: 20px 65px;
-    margin-top: 10px;
+  .form-check{
+    background-color: aliceblue;
+    padding: 15px 45px;
+    margin-top: 5px;
     border-style: 2px solid;
     border-radius: 5px;
-  } */
+  }
   .col-form-label{
     font-weight: bold;
   }
   .order-summary{
-    background-color: #e9edf3;
+    background-color: aliceblue;
     padding: 20px;
     margin-top: 22px;
   }
-  .carousel-caption{
+  .carousel-caption h1{
     color: #e9edf3;
+    margin-top: 50%;
   } 
 
 .nav-item a{
-  color:teal;
+  color:rgb(11, 12, 12);
 }
-
+ 
+/* .nav-item { 
+  margin: auto; 
+} */
 label {
   color: #1a237e;
   font-weight: bold;
@@ -112,6 +123,120 @@ label {
   text-decoration: none;
 }
 
+.meilleur_vente h3 {
+  text-align: center;
+}
+.meilleur_vente p {
+  text-align: center;
+}
+
+ /* icons newsletter */
+ 
+#newsletter.section {
+  border-top: 2px solid #E4E7ED;
+  border-bottom: 3px solid #0f0f0f;
+  margin-top: 30px;
+  background-color: aliceblue;
+}
+
+.newsletter {
+  text-align: center;
+}
+
+.newsletter p {
+  font-size: 24px;
+}
+
+.newsletter form {
+  position: relative;
+  max-width: 520px;
+  margin: 30px auto;
+}
+
+.newsletter form:after {
+  content: "\f003";
+  font-family: FontAwesome;
+  position: absolute;
+  font-size: 160px;
+  color: #E4E7ED;
+  top: 15px;
+  -webkit-transform: translateY(-50%) rotate(15deg);
+  -ms-transform: translateY(-50%) rotate(15deg);
+  transform: translateY(-50%) rotate(15deg);
+  z-index: -1;
+  left: -90px;
+}
+
+.newsletter form .input {
+  width: calc(100% - 160px);
+  margin-right: -4px;
+  border-radius: 40px 0px 0px 40px;
+}
+
+.newsletter form .newsletter-btn {
+  width: 160px;
+  height: 40px;
+  font-weight: 700;
+  background: #4dacd1;
+  color: #FFF;
+  border: none;
+  border-radius: 0px 40px 40px 0px;
+}
+
+.newsletter .newsletter-follow {
+  text-align: center;
+}
+
+.newsletter .newsletter-follow li {
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.newsletter .newsletter-follow li:last-child {
+  margin-right: 0px;
+}
+
+.newsletter .newsletter-follow li a {
+  position: relative;
+  display: block;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  border: 1px solid #E4E7ED;
+  background-color: rgb(238, 236, 236);
+  -webkit-transition: 0.2s all;
+  transition: 0.2s all;
+}
+
+.newsletter .newsletter-follow li a:hover, .newsletter .newsletter-follow li a:focus {
+  background-color: #E4E7ED;
+  color: #D10024;
+}
+
+.filtre {
+  background-color: aliceblue;
+  padding: 10px;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.filtre h4{
+  color: cadetblue;
+  /* text-align: center; */ 
+} 
+.card-body {
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  min-height: 1px;
+  padding: 1.25rem;
+  background-color: aliceblue;
+  border-radius: 5px;
+}
+
+.pagination{
+  justify-content: center;
+}
 
 
  

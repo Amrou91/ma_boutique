@@ -43,12 +43,10 @@ class OrderController extends AbstractController
     }
 
     /**
-     * @Route("/command/recapitulatif", name="order_recap")
+     * @Route("/command/recapitulatif", name="order_recap", methods={"POST"})
      */
-    public function add(Cart $cart, Request $request): Response
+    public function add(Cart $cart, Request $request)
     {
-
-        
         $form=$this->createForm(OrderType::class, null, [
             'user'=>$this->getUser()
         ]);

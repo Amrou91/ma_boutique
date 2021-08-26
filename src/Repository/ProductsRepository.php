@@ -5,8 +5,8 @@ namespace App\Repository;
 use App\Data\SearchData;
 use App\Entity\Products;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Knp\Component\Pager\PaginatorInterface;
 use Doctrine\Persistence\ManagerRegistry;
+use Knp\Component\Pager\PaginatorInterface; 
 
 /**
  * @method Products|null find($id, $lockMode = null, $lockVersion = null)
@@ -16,9 +16,12 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class ProductsRepository extends ServiceEntityRepository
 {
+    private $paginator;
+
     public function __construct(ManagerRegistry $registry, PaginatorInterface $paginator)
     {
         parent::__construct($registry, Products::class);
+        $this -> paginator =  $paginator;
     }
 
     
@@ -36,13 +39,20 @@ class ProductsRepository extends ServiceEntityRepository
     {
         $query = $this
             ->createQueryBuilder('p')
-            ->select('c', 'p')
-            ->join('p.category', 'c');
+            // ->select('c', 'p')
+            ->join('p.category', 'c')
+            ->join('p.fashion', 'm');
 
         if (!empty($data->category)) {
             $query = $query
                 ->andWhere('c.id IN (:category)')
                 ->setParameter('category', $data->category);
+        }
+
+        if (!empty($data->fashion)) {
+            $query = $query
+                ->andWhere('m.id IN (:fashion)')
+                ->setParameter('fashion', $data->fashion); 
         }
 
         if (!empty($data->string)) {
@@ -51,7 +61,12 @@ class ProductsRepository extends ServiceEntityRepository
                 ->setParameter('string', "%{$data->string}%");
         }
 
-        return $query->getQuery()->getResult();
+        $query=$query->getQuery()->getResult();
+        return $this -> paginator ->paginate(
+            $query, /* query NOT result */
+            $data->page, /*page number*/  
+            // $request->query->getInt('page', 1)
+            9 /*limit per page*/);
     }
 
     // /**

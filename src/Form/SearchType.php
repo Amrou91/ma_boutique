@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Data\SearchData;
 
 use App\Entity\Category;
+use App\Entity\Fashion;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -23,6 +24,13 @@ class SearchType extends AbstractType
                 'attr' => [
                     'placeholder' => 'Rechercher'
                 ] 
+            ])
+            ->add('fashion', EntityType::class,[
+                'label' => false,
+                'required' => false,
+                'class' => Fashion::class,
+                'expanded' => true,
+                'multiple' => true
             ])
             ->add('category', EntityType::class,[
                 'label' => false,

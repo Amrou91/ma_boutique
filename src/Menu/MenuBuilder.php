@@ -20,12 +20,12 @@ class MenuBuilder
         $menu = $this->factory->createItem('root', ['childrenAttributes' => ['class' => 'main-nav nav navbar-nav']]);
 
         $menu->addChild('Nos Produits', ['route' => 'products']);
-        $menu->addChild('Contacts', ['route' => 'contact']);
-        $menu->addChild('Aidez-moi', ['route' => 'home']);
+        $menu->addChild('Contact', ['route' => 'contact']);
+        $menu->addChild('Qui sommes-nous ?', ['route' => 'propos']);
 
         // $menu->addChild('Produits', ['route' => 'produits']);
         // ... add more children
 
-        return $menu;
+        return $menu; 
     }
 }

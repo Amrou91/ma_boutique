@@ -25,27 +25,20 @@ class ProductsController extends AbstractController
     /**
      * @Route("/nos-produits", name="products")
      */
-    public function index(Request $request): Response
+    public function index(Request $request, ProductsRepository $produit, PaginatorInterface $paginator): Response
     {
         $data= new SearchData(); 
-        $form = $this->createForm(SearchType::class, $data);
+        $data->page=$request->get('page', 1);
+        $form = $this->createForm(SearchType::class, $data); 
+        $produits=$produit->findAll();
         $form -> handleRequest($request);
         // dd($data); 
+        $produits=$produit->findWithSearch($data);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $produit = $this->entityManager->getRepository(Products::class)->findWithSearch($data);
-        } else {
-            if ( empty($data->string))
-            {
-                $this->addFlash('notice', 'Article Created! Knowledge is power!');
-            }
-            
-            $produit = $this->entityManager->getRepository(Products::class)->findAll();
-        }
-        
         return $this->render('products/index.html.twig', [
-            'produits' => $produit,
-            'form' => $form ->createView(),
+            'produits' => $produits,
+            'prod' => $produit -> allProduits(),
+            'form' => $form ->createView(), 
         ]);
     }
 

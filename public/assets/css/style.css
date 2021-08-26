@@ -652,8 +652,10 @@ body {
   }
   
   .main-nav>li>a {
-    padding: 20px 0px;
-    color: ghostwhite;
+    /* padding: 20px 0px; */
+    padding: 10px 0 0 10px;
+
+    color: rgb(111, 236, 205);
   }
   
   .main-nav>li>a:hover, .main-nav>li>a:focus, .main-nav>li.active>a {
@@ -680,7 +682,7 @@ body {
   .navMain {
     display: block;
   }
-  .navbar-brand {
+  .navbar-brand { 
     color: #070707;
   }
   
@@ -718,18 +720,21 @@ body {
     .main-nav {
       margin: 0px;
       float: none;
+      
     }
     .main-nav>li {
       display: block;
       float: none;
+      
     }
     .main-nav>li+li {
       margin-left: 0px;
+      
     }
     .main-nav>li>a {
-      padding: 15px;
-      color: #FFF;
-    }
+      color: rgb(111, 236, 205);
+      padding: 10px 0 0 10px;
+    } 
   }
   
   /*=========================================================

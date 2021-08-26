@@ -97,6 +97,9 @@
     "egulias/email-validator": {
         "version": "3.1.1"
     },
+    "fortawesome/font-awesome": {
+        "version": "5.15.4"
+    },
     "friendsofphp/proxy-manager-lts": {
         "version": "v1.0.5"
     },
@@ -111,6 +114,9 @@
     },
     "guzzlehttp/psr7": {
         "version": "2.0.0"
+    },
+    "hamcrest/hamcrest-php": {
+        "version": "v2.0.1"
     },
     "jms/metadata": {
         "version": "2.5.0"
@@ -132,6 +138,9 @@
     },
     "mailjet/mailjet-apiv3-php": {
         "version": "v1.5.1"
+    },
+    "mockery/mockery": {
+        "version": "1.4.3"
     },
     "monolog/monolog": {
         "version": "2.2.0"

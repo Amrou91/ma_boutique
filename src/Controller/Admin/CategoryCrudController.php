@@ -21,7 +21,7 @@ class CategoryCrudController extends AbstractCrudController
         return [
             IntegerField::new('id')->onlyOnIndex(),
             TextField::new('name'),
-            AssociationField::new('modes'),
+            // AssociationField::new('modes'),
         ];
     }
     

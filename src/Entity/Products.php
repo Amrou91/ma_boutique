@@ -80,6 +80,12 @@ class Products
      */
     private $isBest;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Fashion::class, inversedBy="products")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $fashion;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -219,6 +225,18 @@ class Products
     public function setIsBest(bool $isBest): self
     {
         $this->isBest = $isBest;
+
+        return $this;
+    }
+
+    public function getFashion(): ?Fashion
+    {
+        return $this->fashion;
+    }
+
+    public function setFashion(?Fashion $fashion): self
+    {
+        $this->fashion = $fashion;
 
         return $this;
     }

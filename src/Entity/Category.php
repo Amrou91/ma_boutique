@@ -29,15 +29,10 @@ class Category
      */
     private $products;
 
-    /**
-     * @ORM\ManyToMany(targetEntity=Mode::class, mappedBy="categories")
-     */
-    private $modes;
 
     public function __construct()
     {
         $this->products = new ArrayCollection();
-        $this->modes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -92,30 +87,4 @@ class Category
         return $this->name;
     }
 
-    /**
-     * @return Collection|Mode[]
-     */
-    public function getModes(): Collection
-    {
-        return $this->modes;
-    }
-
-    public function addMode(Mode $mode): self
-    {
-        if (!$this->modes->contains($mode)) {
-            $this->modes[] = $mode;
-            $mode->addCategory($this);
-        }
-
-        return $this;
-    }
-
-    public function removeMode(Mode $mode): self
-    {
-        if ($this->modes->removeElement($mode)) {
-            $mode->removeCategory($this);
-        }
-
-        return $this;
-    }
 }

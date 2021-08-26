@@ -48,10 +48,10 @@ class StripeController extends AbstractController
             ];
         }
 
-        $products_for_stripe[] = [
+        $product_for_stripe[] = [ 
             'price_data' => [
                 'currency' => 'eur',
-                'unit_amount' => $order->getCarrierPrice(),
+                'unit_amount' => $order->getCarrierPrice() * 100,
                 'product_data' => [
                     'name' => $order->getCarrierName(),
                     'images' => [$YOUR_DOMAIN],
@@ -60,30 +60,29 @@ class StripeController extends AbstractController
             'quantity' => 1,
         ];
 
-
+        // dd($product_for_stripe);
 
         Stripe::setApiKey('sk_test_51J96frLi3uDNMuzADzQUq2Ix7VojK8xoinKX63bsBWOwpvireZRxd9zjeQ15qiCe3xyYknAKR2DIOybItC0Yeukh003oAXaz7q');
 
-        $checkout_session =Session::create([
+        $checkout_session = Session::create([
             'customer_email' => $this->getUser()->getEmail(),
-            'payment_method_types' => ['card'], 
+            'payment_method_types' => ['card'],
             'line_items' => [
                 $product_for_stripe
             ],
             'mode' => 'payment',
             'success_url' => $YOUR_DOMAIN . '/commande/merci/{CHECKOUT_SESSION_ID}',
             'cancel_url' => $YOUR_DOMAIN . '/commande/erreur/{CHECKOUT_SESSION_ID}',
-
-            ]);
+        ]);
 
         $order->setStripeSessionId($checkout_session->id);
         $entityManager->flush();
-    
+
         $response = new JsonResponse(['id' => $checkout_session->id]);
         return $response;
 
 
-    }
+    } 
 }
 
 
