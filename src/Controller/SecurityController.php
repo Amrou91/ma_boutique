@@ -3,9 +3,11 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use KnpU\OAuth2ClientBundle\Client\ClientRegistry;
 
 class SecurityController extends AbstractController
 {
@@ -24,6 +26,16 @@ class SecurityController extends AbstractController
         $lastUsername = $authenticationUtils->getLastUsername();
 
         return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
+    }
+
+    /**
+     * @Route("/connect/github", name="github_connect") 
+     */
+    public function connect(ClientRegistry $clientRegistry): RedirectResponse
+    {
+        /** @var GithubClient $client */
+        $client = $clientRegistry->getClient('github');
+        return $client->redirect(['read:user', 'user:email']);
     }
 
     /**

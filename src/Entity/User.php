@@ -63,6 +63,11 @@ class User implements UserInterface
      */
     private $orders;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $githubId;
+
     public function __construct()
     {
         $this->addresses = new ArrayCollection();
@@ -247,6 +252,18 @@ class User implements UserInterface
                 $order->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getGithubId(): ?int
+    {
+        return $this->githubId;
+    }
+
+    public function setGithubId(int $githubId): self
+    {
+        $this->githubId = $githubId;
 
         return $this;
     }

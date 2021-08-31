@@ -1,0 +1,47 @@
+{# @var ea \EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext #}
+{% extends '@EasyAdmin/page/content.html.twig' %}
+
+{% block page_title 'Bienvenue à Dabchi.COM' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
+    crossorigin="anonymous">
+{% endblock %}
+
+{% block page_content %}
+    <div class="container mt-4"> 
+        <div class="row">
+            <div class="col-md-4 col-sm-4 mb">
+                <div class="card text-black bg-primary mb-3">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Nombres Des Utilisateurs</h5>
+                            <h1> {{ allUsers['value'] }}</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4 mb">
+                <div class="card text-white bg-danger mb-3"> 
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Nombres Des Produits</h5>
+                            <h1> {{ produits['value']}} </h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4 mb">
+                <div class="card text-white bg-success mb-3">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Nombres Des Visiteurs</h5>
+                            <h1> 3 </h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

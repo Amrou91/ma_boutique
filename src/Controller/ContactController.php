@@ -21,7 +21,7 @@ class ContactController extends AbstractController
         if ($form->isSubmitted() && $form -> isValid())
         {
             $context = [
-                'firstName' => $contact->get('firstName')->getData(),
+                'firstName' => $contact->get('firstName')->getData(), 
                 'lastName' => $contact->get('lastName')->getData(),
                 'mail' => $contact->get('email')->getData(),
                 'message' => $contact->get('message')->getData(),

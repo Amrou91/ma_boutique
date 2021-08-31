@@ -43,7 +43,7 @@ class OrderCrudController extends AbstractCrudController
         return $actions
             ->add('detail', $updatePreparation)
             ->add('detail', $updateDelivery)
-            ->add('index', 'detail');
+            ->add('index', 'detail'); 
     }
 
     public function updatePreparation(AdminContext $context)

@@ -21,7 +21,7 @@ class RegistrationFormType extends AbstractType
     {
         $builder
             ->add('firstname', TextType::class, [
-                'label' => 'Votre Prenom',
+                'label' => 'Votre Prenom *',
                 'constraints' => new Length([
                     'min' => 3,
                     'minMessage' => 'Votre Prenom Minimum {{ limit }} caractères',
@@ -32,7 +32,7 @@ class RegistrationFormType extends AbstractType
                     'placeholder' => 'Merci de saisir votre prénom'
                 ]])
             ->add('lastname', TextType::class, [
-                'label' => 'Votre Nom',
+                'label' => 'Votre Nom *',
                 'constraints' => new Length([
                     'min' => 3,
                     'minMessage' => 'Votre Nom Minimum {{ limit }} caractères',
@@ -43,7 +43,7 @@ class RegistrationFormType extends AbstractType
                     'placeholder' => 'Merci de saisir votre nom'
                 ]])
             ->add('email', EmailType::class, [
-                'label' => 'Votre Email',
+                'label' => 'Votre Email *',
                 'constraints' => new Length([
                     'min' => 2,
                     'max' => 55
@@ -58,10 +58,10 @@ class RegistrationFormType extends AbstractType
                 'invalid_message' => 'Le mot de passe de la confirmation doivent etre identique.',
                 'options' => ['attr' => ['class' => 'password-field']],
                 'required' => true,
-                'first_options'  => ['label' => 'Votre mot de passe', 'attr' => [
+                'first_options'  => ['label' => 'Votre mot de passe *', 'attr' => [
                     'placeholder' => 'Merci de saisir un mot de passe'
                 ]],
-                'second_options' => ['label' => 'Confirmez votre mot de passe','attr' => [
+                'second_options' => ['label' => 'Confirmez votre mot de passe *','attr' => [
                     'placeholder' => 'Confirmez un mot de passe'
                 ]],
                 'mapped' => false,
@@ -79,7 +79,7 @@ class RegistrationFormType extends AbstractType
                 
             ])
             ->add('agreeTerms', CheckboxType::class, [
-                'label' => 'Vous Devez Accepter Nos Conditions',
+                'label' => 'En soumettant ce formulaire, j’accepte sans réserve les conditions générales d\'utilisation du site Dabchi.COM.',
                 'mapped' => false,
                 'constraints' => [
                     new IsTrue([

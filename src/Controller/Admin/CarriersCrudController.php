@@ -4,6 +4,10 @@ namespace App\Controller\Admin;
 
 use App\Entity\Carriers;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class CarriersCrudController extends AbstractCrudController
 {
@@ -12,14 +16,15 @@ class CarriersCrudController extends AbstractCrudController
         return Carriers::class;
     }
 
-    /*
+    
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id'),
-            TextField::new('title'),
+            IdField::new('id')->onlyOnIndex(),
+            TextField::new('name', 'Nom'),
             TextEditorField::new('description'),
+            MoneyField::new('price', 'Prix')->setCurrency('EUR')  
         ];
     }
-    */
+    
 }

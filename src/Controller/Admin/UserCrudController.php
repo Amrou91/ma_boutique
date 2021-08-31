@@ -21,12 +21,12 @@ class UserCrudController extends AbstractCrudController
     {
         return [
             IntegerField::new('id')->onlyOnIndex(),
-            BooleanField::new('is_verified')->onlyOnIndex(),
+            BooleanField::new('is_verified', 'Verified')->onlyOnIndex(),
             TextField::new('firstname', 'Nom'),
             TextField::new('lastname', 'Prénom'),
             EmailField::new('email'),
             TextField::new('password')->hideOnIndex(),            
-            ArrayField::new('roles'),
+            ArrayField::new('roles','Role'),
         ];
     }
     

@@ -133,8 +133,26 @@
     "knplabs/knp-paginator-bundle": {
         "version": "v5.6.0"
     },
+    "knpuniversity/oauth2-client-bundle": {
+        "version": "1.20",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "1.20",
+            "ref": "cf8a43877d119412c8528ba07da6b5255670f312"
+        },
+        "files": [
+            "./config/packages/knpu_oauth2_client.yaml"
+        ]
+    },
     "laminas/laminas-code": {
         "version": "3.4.1"
+    },
+    "league/oauth2-client": {
+        "version": "2.6.0"
+    },
+    "league/oauth2-github": {
+        "version": "3.0.0"
     },
     "mailjet/mailjet-apiv3-php": {
         "version": "v1.5.1"
@@ -150,6 +168,9 @@
     },
     "nikic/php-parser": {
         "version": "v4.10.5"
+    },
+    "paragonie/random_compat": {
+        "version": "v9.99.100"
     },
     "phar-io/manifest": {
         "version": "2.0.1"
