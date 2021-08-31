@@ -39,7 +39,6 @@ class Products
 
     /**
      * @Vich\UploadableField(mapping="products", fileNameProperty="featured_image")
-     * @var File
      */
     private $imageFile;
 
