@@ -5,7 +5,8 @@ namespace App\Entity;
 use App\Repository\ProductsRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
-use PHPUnit\TextUI\XmlConfiguration\File;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 
@@ -34,11 +35,13 @@ class Products
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @var string
      */
     private $featured_image;
 
     /**
      * @Vich\UploadableField(mapping="products", fileNameProperty="featured_image")
+     * @var File
      */
     private $imageFile;
 
